@@ -7,7 +7,12 @@ from scrapy.exceptions import NotConfigured
 from selenium.webdriver.support.ui import WebDriverWait
 
 from .http import SeleniumRequest, SeleniumResponse
+from shutil import which
 
+SELENIUM_DRIVER_NAME = 'firefox'
+SELENIUM_DRIVER_EXECUTABLE_PATH = which('geckodriver')
+SELENIUM_DRIVER_ARGUMENTS = ['-headless']  # '--headless' if using chrome instead of firefox
+SELENIUM_BROWSER_EXECUTABLE_PATH = None
 
 class SeleniumMiddleware:
     """Scrapy middleware handling the requests using selenium"""
@@ -53,10 +58,10 @@ class SeleniumMiddleware:
     def from_crawler(cls, crawler):
         """Initialize the middleware with the crawler settings"""
 
-        driver_name = crawler.settings.get('SELENIUM_DRIVER_NAME')
-        driver_executable_path = crawler.settings.get('SELENIUM_DRIVER_EXECUTABLE_PATH')
-        browser_executable_path = crawler.settings.get('SELENIUM_BROWSER_EXECUTABLE_PATH')
-        driver_arguments = crawler.settings.get('SELENIUM_DRIVER_ARGUMENTS')
+        driver_name = SELENIUM_DRIVER_NAME
+        driver_executable_path = SELENIUM_DRIVER_EXECUTABLE_PATH
+        browser_executable_path = SELENIUM_BROWSER_EXECUTABLE_PATH
+        driver_arguments = SELENIUM_DRIVER_ARGUMENTS
 
         if not driver_name or not driver_executable_path:
             raise NotConfigured('SELENIUM_DRIVER_NAME and SELENIUM_DRIVER_EXECUTABLE_PATH must be set')
