@@ -57,7 +57,10 @@ class SeleniumMiddleware:
     @classmethod
     def from_crawler(cls, crawler):
         """Initialize the middleware with the crawler settings"""
-
+        SELENIUM_DRIVER_NAME = 'firefox'
+        SELENIUM_DRIVER_EXECUTABLE_PATH = which('geckodriver')
+        SELENIUM_DRIVER_ARGUMENTS = ['-headless']  # '--headless' if using chrome instead of firefox
+        SELENIUM_BROWSER_EXECUTABLE_PATH = None
         driver_name = SELENIUM_DRIVER_NAME
         driver_executable_path = SELENIUM_DRIVER_EXECUTABLE_PATH
         browser_executable_path = SELENIUM_BROWSER_EXECUTABLE_PATH
