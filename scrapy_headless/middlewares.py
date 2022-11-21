@@ -8,6 +8,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 from .http import SeleniumRequest, SeleniumResponse
 from shutil import which
+import os
 
 SELENIUM_DRIVER_NAME = 'firefox'
 SELENIUM_DRIVER_EXECUTABLE_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'geckodriver')
