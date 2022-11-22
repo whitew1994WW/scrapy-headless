@@ -12,7 +12,7 @@ import os
 
 SELENIUM_DRIVER_NAME = 'firefox'
 SELENIUM_DRIVER_EXECUTABLE_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'geckodriver')
-SELENIUM_DRIVER_ARGUMENTS = ['-headless']  # '--headless' if using chrome instead of firefox
+SELENIUM_DRIVER_ARGUMENTS = ['-headless', '--log fatal']  # '--headless' if using chrome instead of firefox
 SELENIUM_BROWSER_EXECUTABLE_PATH = None
 
 class SeleniumMiddleware:
